@@ -1,0 +1,367 @@
+import axios from 'axios';
+import EndPoints from './EndPoints';
+
+export const PumpService = {
+
+    async getAllMachines() {
+        const url = EndPoints.pumpService.machines;
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async addMachine(data) {
+        const url = EndPoints.pumpService.addMachine;
+        try {
+            return await axios
+                .post(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async addNozzle(data) {
+        const url = EndPoints.pumpService.addNozzle;
+        try {
+            return await axios
+                .post(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async getMeterReadings(date) {
+        console.log(date)
+        const url = EndPoints.pumpService.dailySales;
+        try {
+            return await axios
+                .post(url,date)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async addDailySales(data) {
+        const url = EndPoints.pumpService.addDailySale;
+        try {
+            return await axios
+                .post(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async getStocks(data) {
+        const url = EndPoints.pumpService.stocks+"/rates/bydate";
+        try {
+            return await axios
+                .post(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async addRate(data) {
+        const url = EndPoints.pumpService.addRate;
+        try {
+            return await axios
+                .post(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    
+    async addStock(data) {
+        const url = EndPoints.pumpService.stocks+"/types";
+        try {
+            return await axios
+                .post(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async getDailySales(page,size) {
+        const url = EndPoints.pumpService.sales+"?page="+page+"&size="+size;
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    
+    async getAllStockTypes() {
+        const url = EndPoints.pumpService.stocks+"/types";
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async addSale(data) {
+        const url = EndPoints.pumpService.sales;
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async updateRate(data) {
+        const url = EndPoints.pumpService.stocks+"/rates";
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    
+    async getAllExpenses(page,size) {
+        const url = EndPoints.pumpService.expenses+"?page="+page+"&size="+size;
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    async getAllExpenseTypes() {
+        const url = EndPoints.pumpService.expenses+"/types";
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async addExpense(data) {
+        const url = EndPoints.pumpService.expenses;
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async addCustomerLedger(data) {
+        const url = EndPoints.pumpService.customerLedger;
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async getAllCustomerLedgers() {
+        const url = EndPoints.pumpService.customerLedger+'/list';
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async getCustomerLedgerById(id) {
+        const url = EndPoints.pumpService.customerLedger+'/'+id+"/credit-debit-info";
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async addBankLedger(data) {
+        const url = EndPoints.pumpService.bankLedger;
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async getAllBankLedgers() {
+        const url = EndPoints.pumpService.bankLedger+'/list';
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async getBankLedgerById(id) {
+        const url = EndPoints.pumpService.bankLedger+'/'+id;
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async addBankLedgerEntry(data) {
+        const url = EndPoints.pumpService.bankLedger+'/credit-debit';
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async stockRateHistoryUpcoming(data,id) {
+        const url = EndPoints.pumpService.stockRateHistoryUpcoming+'/'+id+"/rates/record";
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+    // /rates/record/stocks/{stockTypeId}
+};

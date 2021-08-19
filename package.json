@@ -1,0 +1,43 @@
+{
+  "name": "petrol",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode development --port 4300 --open",
+    "build": "vue-cli-service build --mode prod",
+    "lint": "vue-cli-service lint",
+    "zip": "vue-cli-service build --mode prod; mv dist ROOT; zip -r ROOT.zip ROOT/",
+    "start": "vue-cli-service serve --mode development --port 4300 --open",
+    "prod": "vue-cli-service serve --mode prod --port 4300 --open",
+    "dev": "vue-cli-service serve --mode dev --port 4300 --open",
+    "acc": "vue-cli-service serve --mode acc --port 4300 --open"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.4.2",
+    "axios": "^0.19.2",
+    "core-js": "^3.4.4",
+    "moment": "^2.24.0",
+    "quasar": "^1.9.1",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "vuelidate": "^0.7.6",
+    "vuex": "^3.1.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-router": "^4.1.0",
+    "@vue/cli-plugin-vuex": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-transform-imports": "1.5.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "script-loader": "^0.7.2",
+    "vue-cli-plugin-quasar": "^2.0.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
