@@ -93,7 +93,7 @@ export default {
       console.log(this.date);
       let date;
       if (this.dateLabel) {
-        date = moment(this.dateLabel).format("DD MMM YYYY");
+        date = moment(this.dateLabel).format("YYYY-MM-DD");
         this.dateLabel= moment(date).format("DD MMM YYYY")
       } else {
         date = "";
@@ -111,7 +111,7 @@ export default {
     },
     getMeterReadings() {
       let date = new Date();
-      this.date = moment(date).format("DD MMM YYYY");
+      this.date = moment(date).format("YYYY-MM-DD");
       this.dateLabel= moment(this.date).format("DD MMM YYYY")
       PumpService.getMeterReadings({date:this.date})
         .then((res) => {
