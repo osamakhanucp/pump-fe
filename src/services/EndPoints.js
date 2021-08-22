@@ -36,6 +36,8 @@ export default {
     addNozzle: pump + "/addNozzle",
     dailySales: pump + "/dailySaleTemplate",
     addDailySale: pump + "/addDailySale",
+    addMeterReading:pump + "/addMeterReading",
+    meterReadingTemplate: pump + "/meterReadingTemplate",
     authenticate: pump + "/authenticate",
     getRates: rates + "/getRates",
     addRate: rates + "/addRate",

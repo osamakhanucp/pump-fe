@@ -51,7 +51,7 @@ export const PumpService = {
     },
     async getMeterReadings(date) {
         console.log(date)
-        const url = EndPoints.pumpService.dailySales;
+        const url = EndPoints.pumpService.meterReadingTemplate;
         try {
             return await axios
                 .post(url,date)
@@ -65,8 +65,8 @@ export const PumpService = {
             throw e;
         }
     },
-    async addDailySales(data) {
-        const url = EndPoints.pumpService.addDailySale;
+    async addMeterReadings(data) {
+        const url = EndPoints.pumpService.addMeterReading;
         try {
             return await axios
                 .post(url, data)

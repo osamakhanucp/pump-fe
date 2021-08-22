@@ -77,7 +77,7 @@ export default {
 
   methods: {
     addReadings() {
-      PumpService.addDailySales(this.readings)
+      PumpService.addMeterReadings(this.readings)
         .then((res) => {
           console.log(res);
           if (res.data.code === "201") {
@@ -115,6 +115,7 @@ export default {
       PumpService.getMeterReadings({date:this.date})
         .then((res) => {
           this.readings = res.data;
+          this.readings.entryDate=this.date
         })
         .catch((err) => {
           console.log(err);
