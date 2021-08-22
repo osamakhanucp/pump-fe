@@ -93,7 +93,7 @@ export default {
       console.log(this.date);
       let date;
       if (this.dateLabel) {
-        date = moment(this.dateLabel).toISOString();
+        date = moment(this.dateLabel);
         this.dateLabel= moment(date).format("DD MMM YYYY")
       } else {
         date = "";
