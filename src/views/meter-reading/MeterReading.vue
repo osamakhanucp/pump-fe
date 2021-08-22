@@ -110,7 +110,7 @@ export default {
     },
     getMeterReadings() {
       let date = new Date();
-      this.date = moment(date).toISOString();
+      this.date = moment(date).format('YYYY-MM-DD[T]HH:mm:ss.SSS');
       this.dateLabel= moment(this.date).format("DD MMM YYYY")
       PumpService.getMeterReadings({date:this.date})
         .then((res) => {
