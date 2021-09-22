@@ -103,7 +103,7 @@ a {
 }
 
 .loginbutton {
-  background-color: #4caf50;
+  background-color: #059DDB;
   border-radius: 5px/5px;
   -webkit-border-radius: 5px/5px;
   -moz-border-radius: 5px/5px;

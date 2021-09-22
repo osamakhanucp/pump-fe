@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="box-shadow: 0 0 20px #e1e1e1; padding: 32px; margin-top: 16px">
+    <div>
       <Header :title="this.$route.params.add ? 'Add Rate' : 'Update Rate'" />
       <q-btn-toggle
         style="margin-top: 24px"
@@ -271,10 +271,10 @@ export default {
     updateRate(stock) {
       console.log(stock);
     },
-    activeDateFunc(val){
-      console.log(val)
-      this.data.activeDateLabel= val
-    }
+    activeDateFunc(val) {
+      console.log(val);
+      this.data.activeDateLabel = val;
+    },
   },
 
   created() {
@@ -293,12 +293,12 @@ export default {
           // this.allStockTypes = res.data;
           this.stockRatesHistory = res.data.stockRatesHistory;
           for (let i = 0; i < this.stockRatesHistory.length; i++) {
-            this.stockRatesHistory[i].stockTypeName=this.stockName
+            this.stockRatesHistory[i].stockTypeName = this.stockName;
           }
           this.stockRatesUpcoming = res.data.stockRatesUpcoming;
-        
+
           for (let i = 0; i < this.stockRatesUpcoming.length; i++) {
-            this.stockRatesUpcoming[i].stockTypeName=this.stockName
+            this.stockRatesUpcoming[i].stockTypeName = this.stockName;
           }
         })
         .catch((err) => {
@@ -364,7 +364,7 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4caf50;
-  color: white;
+  background-color: #059DDB;
+  color: #FAFAFA;
 }
 </style>

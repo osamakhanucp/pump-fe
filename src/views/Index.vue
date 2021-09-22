@@ -1,8 +1,8 @@
 <template>
   <q-layout view="hHr lpR lff">
-    <q-header elevated class="bg-primary text-white" style="padding: 8px 0px">
+    <q-header elevated class="top-bar-props" style="padding: 8px 0px">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="left = !left" />
+        <!-- <q-btn dense flat round icon="menu" @click="left = !left" /> -->
 
         <q-toolbar-title>
           <q-avatar>
@@ -18,7 +18,8 @@
       <q-scroll-area class="fit">
         <q-list>
           <template v-for="(menuItem, index) in menuList">
-            <q-item
+            <div
+              class="menu"
               :key="index"
               clickable
               v-ripple
@@ -26,13 +27,13 @@
             >
               <!-- :active="menuItem.label === 'Outbox'" -->
               <q-item-section avatar>
-                <q-icon :name="menuItem.icon" />
+                <q-icon :name="menuItem.icon" class="icon" />
               </q-item-section>
-              <q-item-section>
+              <q-item-section class="menu-text">
                 {{ menuItem.label }}
               </q-item-section>
-            </q-item>
-            <q-separator :key="'sep' + index" v-if="menuItem.separator" />
+            </div>
+            <!-- <q-separator :key="'sep' + index" v-if="menuItem.separator" /> -->
           </template>
         </q-list>
       </q-scroll-area>
@@ -42,7 +43,7 @@
       <q-page class="main-page">
         <router-view />
       </q-page>
-        <!-- <img src="assets/gas-pump.png" class="image-on-all-pages" alt="" /> -->
+      <!-- <img src="assets/gas-pump.png" class="image-on-all-pages" alt="" /> -->
     </q-page-container>
   </q-layout>
 </template>
@@ -121,7 +122,6 @@ export default {
   props: {},
   methods: {
     goToRoute(content) {
-      
       if (content !== this.$router.history.current.name) {
         this.$router.push({ name: content });
       }
@@ -146,13 +146,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .main-page {
   margin: 0 auto;
   padding: 16px 32px;
+  width: 1300px;
 }
 .side-bar-item {
-  border-bottom: 1px solid #e2e2e2;
+  /* border-bottom: 1px solid #e2e2e2; */
   padding: 16px 8px;
   cursor: pointer;
   font-weight: 700;
@@ -169,6 +170,50 @@ export default {
   height: 1000px;
   right: 30px;
   z-index: -10;
-  
+}
+.top-bar-props {
+  /* background: #2C4457 */
+  color: #e6f3ff;
+}
+.menu {
+  display: flex;
+
+  padding: 10px 20px;
+  &:first-child {
+    margin-top: 10px;
+  }
+  .icon {
+    color: #059ddb;
+    font-size: 20px;
+  }
+  &-text {
+    color: #2C4457;
+  }
+}
+.menu:hover {
+  background: #059ddb;
+  color: #fafafa;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  .icon {
+    color: #fafafa;
+  }
+
+  .menu-text {
+    color: #fafafa;
+  }
+}
+.menu:focus {
+  background: #059ddb;
+  color: #fafafa;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  .icon {
+    color: #fafafa;
+  }
+
+  .menu-text {
+    color: #fafafa;
+  }
 }
 </style>

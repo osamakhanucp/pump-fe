@@ -101,7 +101,7 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4caf50;
-  color: white;
+  background-color: #059DDB;
+  color: #FAFAFA;
 }
 </style>

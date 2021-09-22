@@ -1,14 +1,7 @@
 <template>
   <!-- <div style="padding-bottom: 48px"> -->
 
-  <div
-    style="
-      box-shadow: 0 0 20px #e1e1e1;
-      padding: 32px;
-      margin-top: 16px;
-      padding-bottom: 48px;
-    "
-  >
+  <div>
     <Header title="Meter Reading" />
     <div
       style="display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 8px"
@@ -165,8 +158,8 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4caf50;
-  color: white;
+  background-color: #059DDB;
+  color: #FAFAFA;
 }
 .q-field--with-bottom {
   padding-bottom: 0px !important;

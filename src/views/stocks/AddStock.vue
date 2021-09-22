@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="box-shadow: 0 0 20px #e1e1e1; padding: 32px; margin-top: 16px">
+    <div>
       <Header title="Add a Stock" />
       <!-- <q-btn-toggle
         v-model="data.status"

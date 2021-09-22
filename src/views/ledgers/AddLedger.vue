@@ -1,12 +1,5 @@
 <template>
-  <div
-    style="
-      box-shadow: 0 0 20px #e1e1e1;
-      padding: 32px;
-      margin-top: 16px;
-      padding-bottom: 48px;
-    "
-  >
+  <div>
     <Header title="Add a Ledger" />
     <div class="custom-grid" style="margin-top: 24px">
       <CInput

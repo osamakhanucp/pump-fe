@@ -1,12 +1,5 @@
 <template>
-  <div
-    style="
-      box-shadow: 0 0 20px #e1e1e1;
-      padding: 32px;
-      margin-top: 16px;
-      padding-bottom: 48px;
-    "
-  >
+  <div>
     <Header title="Ledgers" />
 
     <div
@@ -121,7 +114,7 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4caf50;
-  color: white;
+  background-color: #059DDB;
+  color: #FAFAFA;
 }
 </style>
