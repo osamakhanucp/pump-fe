@@ -17,7 +17,7 @@ const routes = [
             import("../views/Index.vue"),
         children: [
             {
-                path: "/dashboard",
+                path: "/",
                 name: "dashboard",
                 component: () =>
                     import("../views/dashboard/Dashboard.vue")
@@ -192,6 +192,35 @@ const routes = [
 
                     },
                     
+                ]
+            },
+            {
+                path: "/supplier-ledgers",
+                component: () =>
+                    import("../views/supplier-ledgers/Index.vue"),
+                children: [
+                    {
+                        path: "",
+                        name: "supplier-ledgers",
+                        component: () =>
+                            import("../views/supplier-ledgers/SupplyLedgers.vue"),
+                    },
+                    {
+
+                        path: "add-supplier-ledger",
+                        name: "add-supplier-ledger",
+                        component: () =>
+                            import("../views/supplier-ledgers/AddSupplyLedger.vue"),
+
+                    },
+                    {
+
+                        path: "view-supplier-ledger/:id",
+                        name: "view-supplier-ledger",
+                        component: () =>
+                            import("../views/supplier-ledgers/ViewSupplyLedger.vue"),
+
+                    }                    
                 ]
             },
 

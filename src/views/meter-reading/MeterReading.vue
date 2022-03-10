@@ -7,9 +7,9 @@
       style="display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 8px"
     >
       <CDatePicker v-model="dateLabel" @input="dateFilter" :range="false" />
-      <div>
+      <!-- <div>
         <q-btn style="margin-top: 2px" color="primary" label="Download PDF" />
-      </div>
+      </div> -->
       <div></div>
     </div>
     <table>
@@ -20,6 +20,7 @@
         <th>Rate</th>
         <th>Opening</th>
         <th>Add Closing</th>
+        <th>Action</th>
       </tr>
       <tr
         v-for="(reading, index) in readings.dailySaleNozzles"
@@ -38,11 +39,29 @@
           />
           <span v-if="!readings.canEdit">{{ reading.closing }}</span>
         </td>
+        <td style="text-align: center; cursor: pointer"  @click="deleteDialog(index)">
+          <span v-if="reading.id !== null">
+            <q-icon name="delete" size="md" />
+          </span>
+        </td>
       </tr>
     </table>
     <div style="text-align: right; margin-top: 16px" v-if="readings.canEdit">
       <q-btn color="primary" label="Add Readings" @click="addReadings" />
     </div>
+    <q-dialog v-model="confirm" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-avatar icon="delete" color="negative" text-color="white" />
+          <span class="q-ml-sm">Are you sure you want to delete this entry?</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cancel" color="primary" v-close-popup />
+          <q-btn flat label="Delete" color="primary" @click="deleteReading()" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -65,6 +84,8 @@ export default {
     return {
       readings: [],
       date: "",
+      confirm: false,
+      selectedReadingIndex: -1
     };
   },
 
@@ -72,7 +93,6 @@ export default {
     addReadings() {
       PumpService.addMeterReadings(this.readings)
         .then((res) => {
-          console.log(res);
           if (res.data.code === "201") {
             this.readings = [];
             this.getMeterReadings();
@@ -109,12 +129,32 @@ export default {
       PumpService.getMeterReadings({date:this.date})
         .then((res) => {
           this.readings = res.data;
+          console.log("readings : ",this.readings);
           this.readings.entryDate=this.date
         })
         .catch((err) => {
           console.log(err);
         });
     },
+    deleteDialog(index) {
+      this.confirm = true;
+      this.selectedReadingIndex = index;
+
+    },
+    deleteReading() {
+      let dateObj = {
+        date: this.date
+      };
+      console.log(this.readings.dailySaleNozzles[this.selectedReadingIndex]);
+      PumpService.deleteMeterReadingEntry(this.readings.dailySaleNozzles[this.selectedReadingIndex].id, dateObj)
+      .then((res) => {
+        console.log(res);
+        this.getMeterReadings();
+      })
+      .catch((err) => {
+          console.log(err);
+        });
+    }
   },
 
   created() {
@@ -146,9 +186,9 @@ td {
   text-transform: capitalize;
 }
 
-table tr:nth-child(even) {
-  //   background-color: #f2f2f2;
-}
+// table tr:nth-child(even) {
+//   //   background-color: #f2f2f2;
+// }
 
 table tr:hover {
   background-color: #ddd;

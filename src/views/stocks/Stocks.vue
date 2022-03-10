@@ -49,15 +49,12 @@
         <td>
           <span v-if="stock && stock.status">{{ stock.status }}</span>
         </td>
-        <td style="text-align: center">
-          <span
-            style="cursor: pointer"
-            @click="
+        <td style="text-align: center; cursor: pointer"  @click="
               () => {
                 updateRate(stock);
               }
-            "
-          >
+            ">
+          <span>
             <q-icon name="edit" />
           </span>
         </td>

@@ -1,5 +1,6 @@
 // let host = "http://52.77.209.169";
-let host = "http://"+window.location.hostname;
+let host = "http://174.138.19.20";
+// let host = "http://"+window.location.hostname;
 
 // let host = window.location.hostname;
 // if (process.env.VUE_APP_ENV === "dev") {
@@ -25,6 +26,7 @@ const stocks = pumpServiceUrl + "/stocks";
 const expenses = pumpServiceUrl + "/expenses";
 const customerLedger = pumpServiceUrl + "/customer-ledger";
 const bankLedger = pumpServiceUrl + "/bank-ledger";
+const supplierLedger = pumpServiceUrl + "/supplierLedgers";
 
 export default {
   authService: {
@@ -37,6 +39,7 @@ export default {
     dailySales: pump + "/dailySaleTemplate",
     addDailySale: pump + "/addDailySale",
     addMeterReading:pump + "/addMeterReading",
+    meterReading:pump + "/meterReading",
     meterReadingTemplate: pump + "/meterReadingTemplate",
     authenticate: pump + "/authenticate",
     getRates: rates + "/getRates",
@@ -46,7 +49,8 @@ export default {
     stocks: stocks,
     expenses: expenses,
     customerLedger: customerLedger,
-    bankLedger: bankLedger
+    bankLedger: bankLedger,
+    supplierLedger: supplierLedger
 
   },
 

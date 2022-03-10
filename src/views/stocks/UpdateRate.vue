@@ -2,7 +2,7 @@
   <div>
     <div>
       <Header :title="this.$route.params.add ? 'Add Rate' : 'Update Rate'" />
-      <q-btn-toggle
+      <!-- <q-btn-toggle
         style="margin-top: 24px"
         v-model="data.status"
         push
@@ -11,7 +11,7 @@
           { label: 'Active', value: 'active' },
           { label: 'Disabled', value: 'disabled' },
         ]"
-      />
+      /> -->
       <div class="custom-grid" style="margin-top: 24px">
         <CInput
           label="Name"
@@ -38,11 +38,13 @@
           label="P. Rate"
           v-model="data.pRate"
           :error="$v.data.pRate.$error"
+          :type="'number'"
         />
         <CInput
           label="S. Rate"
           v-model="data.sRate"
           :error="$v.data.sRate.$error"
+          :type="'number'"
         />
 
         <CDatePicker
@@ -65,114 +67,116 @@
         <q-btn color="primary" label="Save" @click="addStock" />
       </div>
       <div style="border-bottom: 1px solid #e2e2e2; margin-top: 48px"></div>
-      <div class="audit-trail">
-        <q-btn-toggle
-          style="margin-top: 48px"
-          v-model="audit"
-          toggle-color="primary"
-          :options="[
-            { label: 'History', value: 'history' },
-            { label: 'Upcomings', value: 'upcomings' },
-          ]"
-        />
-        <div v-if="audit == 'history'">
-          <table>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>P. Rate</th>
-              <th>S. Rate</th>
-              <th>Entry Date</th>
-              <th>Active Date</th>
-              <th>Status</th>
-            </tr>
-            <tr
-              v-for="(stock, index) in stockRatesHistory"
-              :key="index + '_stock'"
-            >
-              <td>{{ index + 1 }}</td>
-              <td>
-                <span v-if="stock && stock.stockTypeName">{{
-                  stock.stockTypeName
-                }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.pRate">{{ stock.pRate }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.sRate">{{ stock.sRate }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.entryDate">{{
-                  stock.entryDate | date
-                }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.activeDate">{{
-                  stock.activeDate | date
-                }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.status">{{ stock.status }}</span>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div v-if="audit == 'upcomings'">
-          <table>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>P. Rate</th>
-              <th>S. Rate</th>
-              <th>Entry Date</th>
-              <th>Active Date</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-            <tr
-              v-for="(stock, index) in stockRatesUpcoming"
-              :key="index + '_stock'"
-            >
-              <td>{{ index + 1 }}</td>
-              <td>
-                <span v-if="stock && stock.stockTypeName">{{
-                  stock.stockTypeName
-                }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.pRate">{{ stock.pRate }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.sRate">{{ stock.sRate }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.entryDate">{{
-                  stock.entryDate | date
-                }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.activeDate">{{
-                  stock.activeDate | date
-                }}</span>
-              </td>
-              <td>
-                <span v-if="stock && stock.status">{{ stock.status }}</span>
-              </td>
-              <td style="text-align: center">
-                <span
-                  style="cursor: pointer"
-                  @click="
-                    () => {
-                      updateRate(stock);
-                    }
-                  "
-                >
-                  <q-icon name="edit" />
-                </span>
-              </td>
-            </tr>
-          </table>
+        <div v-if="!this.$route.params.add">
+        <div class="audit-trail">
+          <q-btn-toggle
+            style="margin-top: 48px"
+            v-model="audit"
+            toggle-color="primary"
+            :options="[
+              { label: 'History', value: 'history' },
+              { label: 'Upcomings', value: 'upcomings' },
+            ]"
+          />
+          <div v-if="audit == 'history'">
+            <table>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>P. Rate</th>
+                <th>S. Rate</th>
+                <th>Entry Date</th>
+                <th>Active Date</th>
+                <th>Status</th>
+              </tr>
+              <tr
+                v-for="(stock, index) in stockRatesHistory"
+                :key="index + '_stock'"
+              >
+                <td>{{ index + 1 }}</td>
+                <td>
+                  <span v-if="stock && stock.stockTypeName">{{
+                    stock.stockTypeName
+                  }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.pRate">{{ stock.pRate }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.sRate">{{ stock.sRate }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.entryDate">{{
+                    stock.entryDate | date
+                  }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.activeDate">{{
+                    stock.activeDate | date
+                  }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.status">{{ stock.status }}</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div v-if="audit == 'upcomings'">
+            <table>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>P. Rate</th>
+                <th>S. Rate</th>
+                <th>Entry Date</th>
+                <th>Active Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              <tr
+                v-for="(stock, index) in stockRatesUpcoming"
+                :key="index + '_stock'"
+              >
+                <td>{{ index + 1 }}</td>
+                <td>
+                  <span v-if="stock && stock.stockTypeName">{{
+                    stock.stockTypeName
+                  }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.pRate">{{ stock.pRate }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.sRate">{{ stock.sRate }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.entryDate">{{
+                    stock.entryDate | date
+                  }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.activeDate">{{
+                    stock.activeDate | date
+                  }}</span>
+                </td>
+                <td>
+                  <span v-if="stock && stock.status">{{ stock.status }}</span>
+                </td>
+                <td style="text-align: center">
+                  <span
+                    style="cursor: pointer"
+                    @click="
+                      () => {
+                        updateRate(stock);
+                      }
+                    "
+                  >
+                    <q-icon name="edit" />
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -292,14 +296,24 @@ export default {
         .then((res) => {
           // this.allStockTypes = res.data;
           this.stockRatesHistory = res.data.stockRatesHistory;
+          let currentStockIndex = -1;
           for (let i = 0; i < this.stockRatesHistory.length; i++) {
+            if(this.stockRatesHistory[i].id === this.data.id) {
+              currentStockIndex = i;
+            }
             this.stockRatesHistory[i].stockTypeName = this.stockName;
           }
-          this.stockRatesUpcoming = res.data.stockRatesUpcoming;
+          this.stockRatesHistory.splice(currentStockIndex, 1)
 
+          this.stockRatesUpcoming = res.data.stockRatesUpcoming;
+          currentStockIndex = -1;
           for (let i = 0; i < this.stockRatesUpcoming.length; i++) {
+            if(this.stockRatesUpcoming[i].id === this.data.id) {
+              currentStockIndex = i;
+            }
             this.stockRatesUpcoming[i].stockTypeName = this.stockName;
           }
+          this.stockRatesUpcoming.splice(currentStockIndex, 1)
         })
         .catch((err) => {
           console.log(err);

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Header title="Ledgers" />
+    <Header title="Customer Ledgers" />
 
     <div
-      style="text-align: right; display: grid; grid-template-columns: 1fr 1fr"
+      style="text-align: right; "
     >
-      <div style="text-align: left">
+      <!-- <div style="text-align: left">
         <q-btn color="primary" label="Generate Bill" @click="generateBill" />
-      </div>
+      </div> -->
 
       <div>
         <q-btn color="primary" label="Add Ledger" @click="addLedger" />

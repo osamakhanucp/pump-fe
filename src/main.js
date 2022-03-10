@@ -7,6 +7,8 @@ import axios from 'axios';
 import Vuelidate from 'vuelidate';
 import { LoadingBar } from 'quasar'
 import moment from "moment"
+import Echarts from 'echarts-vue'
+Echarts.install(Vue)
 Vue.config.productionTip = false;
 Vue.use(Vuelidate);
 axios.defaults.timeout = 150000;

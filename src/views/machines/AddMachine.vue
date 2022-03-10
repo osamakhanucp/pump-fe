@@ -24,12 +24,13 @@
           option-value="stockTypeName"
           option-label="stockTypeName"
           :error="$v.nozzle.type.$error"
-        />
+        /> 
         <CInput label="Rate" v-model="nozzle.rate" readonly />
         <CInput
           label="Opening"
           v-model="nozzle.opening"
           :error="$v.nozzle.opening.$error"
+          :type="'number'"
         />
         <CDatePicker
           label="Installation Date"

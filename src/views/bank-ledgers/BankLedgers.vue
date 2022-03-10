@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header title="Ledgers" />
+    <Header title="Bank Ledgers" />
 
     <div style="text-align: right">
 

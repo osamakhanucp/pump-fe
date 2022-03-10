@@ -36,6 +36,7 @@ export const PumpService = {
 
     async addNozzle(data) {
         const url = EndPoints.pumpService.addNozzle;
+        console.log(data);
         try {
             return await axios
                 .post(url, data)
@@ -363,5 +364,182 @@ export const PumpService = {
             throw e;
         }
     },
+
+    async deleteNozzleEntry(data) {
+        const url = EndPoints.pumpService.machines;
+        try {
+            return await axios
+                .delete(url,{data:data})
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async editNozzleEntry(data) {
+        const url = EndPoints.pumpService.machines;
+        try {
+            return await axios
+                .put(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async deleteMeterReadingEntry(id, data) {
+        const url = EndPoints.pumpService.meterReading + '/' + id;
+        try {
+            return await axios
+                .delete(url,{data:data})
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async addSupplierLedgerEntry(data) {
+        const url = EndPoints.pumpService.supplierLedger;
+        try {
+            return await axios
+                .post(url,data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async getSupplierLedgers() {
+        const url = EndPoints.pumpService.supplierLedger;
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async editSupplierLedgers(data) {
+        const url = EndPoints.pumpService.supplierLedger;
+        try {
+            return await axios
+                .put(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async deleteSupplierLedger(id) {
+        const url = EndPoints.pumpService.supplierLedger + '/' + id;
+        try {
+            return await axios
+                .delete(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async getSupplierLedgerById(id) {
+        const url = EndPoints.pumpService.supplierLedger + '/' + id;
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async getSupplierLedgerItems(id) {
+        const url = EndPoints.pumpService.supplierLedger + '/' + id + '/ledgerItems';
+        try {
+            return await axios
+                .get(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async deleteSupplierLedgerItem(supplierLedgerId, itemId) {
+        const url = EndPoints.pumpService.supplierLedger + '/' + supplierLedgerId + '/ledgerItems/' + itemId;
+        try {
+            return await axios
+                .delete(url)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
+    async addSupplierLedgerItem(id, data) {
+        const url = EndPoints.pumpService.supplierLedger + '/' + id + '/ledgerItems';
+        try {
+            return await axios
+                .post(url, data)
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    throw error;
+                });
+        } catch (e) {
+            throw e;
+        }
+    },
+
     // /rates/record/stocks/{stockTypeId}
 };

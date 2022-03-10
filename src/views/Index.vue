@@ -93,8 +93,14 @@ export default {
         },
         {
           icon: "dashboard",
-          label: "Ledgers",
+          label: "Customer Ledgers",
           name: "ledgers",
+          separator: true,
+        },
+        {
+          icon: "dashboard",
+          label: "Supplier Ledgers",
+          name: "supplier-ledgers",
           separator: true,
         },
         {
@@ -104,12 +110,7 @@ export default {
           separator: true,
         },
 
-        {
-          icon: "settings",
-          label: "Settings",
-          name: "settings",
-          separator: true,
-        },
+      
         {
           icon: "logout",
           label: "Exit",

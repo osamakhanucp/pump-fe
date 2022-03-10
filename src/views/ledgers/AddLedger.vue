@@ -8,11 +8,6 @@
         :error="$v.data.customerName.$error"
       />
       <CInput
-        label="Status"
-        v-model="data.status"
-        :error="$v.data.status.$error"
-      />
-      <CInput
         label="Contact Person"
         v-model="data.contactPerson"
         :error="$v.data.contactPerson.$error"
@@ -201,7 +196,6 @@ export default {
     return {
       data: {
         customerName: { required },
-        status: { required },
         contactPerson: { required },
         contactNo: { required },
         address: { required },

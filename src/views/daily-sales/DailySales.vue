@@ -9,10 +9,10 @@
     <div
       style="display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 8px"
     >
-      <CDatePicker v-model="date" @input="dateFilter" />
-      <div>
+      <!-- <CDatePicker v-model="date" @input="dateFilter" /> -->
+      <!-- <div>
         <q-btn style="margin-top: 2px" color="primary" label="Download PDF" />
-      </div>
+      </div> -->
       <div></div>
     </div>
     <table>
